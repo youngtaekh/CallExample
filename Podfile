@@ -6,5 +6,6 @@ target 'RTCExample' do
   use_frameworks!
 
   # Pods for RTCExample
+	pod 'libjingle_peerconnection'
 
 end

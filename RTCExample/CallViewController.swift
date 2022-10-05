@@ -11,6 +11,7 @@ class CallViewController: UIViewController {
 	private final let TAG = "CallController"
 	var room: Room?
 	var callId: String?
+	var iceCandidates: String?
 
 	@IBOutlet weak var tvTitle: UILabel!
 	@IBOutlet weak var tvCount: UILabel!
@@ -23,39 +24,42 @@ class CallViewController: UIViewController {
 		navigationController?.setNavigationBarHidden(true, animated: true)
 		navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 		
+		let manager = RTPManager.instance
+		var isOffer = true
 		if room != nil {
-			Log(message: "\(TAG) room is \(room!)")
 			tvTitle.text = room!.title
-			var count = 0
+//			processCalls(calls: room!.calls!)
+			var count = 1
 			for call in room!.calls! {
-				Log(message: "\(TAG) call is \(call)")
 				if call.userId == AppDB.instance.getUserId() {
-					callId = call.callId
-					Log(message: "\(TAG) callId is \(callId!)")
+					self.callId = call.callId
+					continue
 				}
-				if call.status.uppercased() != "TERMINATED" {
-					count += 1
+				if call.status.uppercased() == TERMINATED {
+					continue
 				}
+				isOffer = false
+				count += 1
+				let remoteSDP = RTCSessionDescription(type: "offer", sdp: call.sdp!)!
+				manager.createAnswer(delegate: self, remoteSDP: remoteSDP, candidates: call.ice!)
 			}
-			tvCount.text = String(count)
 		}
+		
+		if isOffer {
+			manager.createOffer(delegate: self)
+		}
+		
+//		RTPManager.instance.delegate = self
+//		RTPManager.instance.createPeerConnectionFactory()
+//		RTPManager.instance.createPeerConnection()
     }
 	
 	@IBAction func refresh(_ sender: Any) {
 		Log(message: "\(TAG) \(#function)")
-		getRoomInfo(roomId: room!.roomId) {
-			room in
+		getRoomInfo(roomId: room!.roomId) { room in
 			if room != nil {
-				var count = 0
-				for call in room!.calls! {
-					Log(message: "\(self.TAG) call is \(call)")
-					if (call.status.uppercased() != "TERMINATED") {
-						count += 1
-					}
-				}
-				DispatchQueue.main.async {
-					self.tvCount.text = String(count)
-				}
+				self.room = room
+				self.processCalls(calls: room!.calls!)
 			}
 		}
 	}
@@ -65,37 +69,77 @@ class CallViewController: UIViewController {
 		updateCallStatus(callId: callId!) {
 			call in
 			if call != nil {
-				Log(message: "\(self.TAG) endCall call is \(call!)")
+				Log(message: "\(self.TAG) updateCallStatus success")
 				DispatchQueue.main.async {
 					self.navigationController?.popViewController(animated: true)
 				}
+				RTPManager.instance.end()
 			}
 		}
 	}
 	
-	@IBAction func sdp(_ sender: Any) {
-		updateSDP(sdp: "sdsdp")
-	}
-	
-	@IBAction func ice(_ sender: Any) {
-		updateICE(ice: "iceice")
+	func processCalls(calls: Array<Call>) {
+		var count = 1
+		for call in calls {
+//			Log(message: "\(self.TAG) call is \(call)")
+			if call.userId == AppDB.instance.getUserId() {
+				self.callId = call.callId
+			} else {
+				//Get Active Participants
+				if call.status.uppercased() != TERMINATED {
+					count += 1
+//					let localSDP = addIceCandidates(sdp: call.sdp!, candidates: call.ice!)
+					let sdp = RTCSessionDescription(type: "answer", sdp: call.sdp!)
+					RTPManager.instance.setRemoteDescription(sdp: sdp!)
+					let arr = call.ice!.components(separatedBy: ";")
+					for iceSDP in arr {
+						let ice = RTCICECandidate(mid: "audio", index: 0, sdp: iceSDP)
+						RTPManager.instance.addRemoteICECandidate(ice: ice!)
+					}
+				}
+			}
+		}
+		DispatchQueue.main.async {
+			self.tvCount.text = String(count)
+		}
 	}
 	
 	func updateSDP(sdp: String) {
 		updateCallSDP(callId: callId!, sdp: sdp) {
-			call in
-			if call != nil {
-				Log(message: "\(self.TAG) updateSDP call is \(call!)")
+			success in
+			if success {
+				Log(message: "\(self.TAG) updateSDP success")
 			}
 		}
 	}
 	
-	func updateICE(ice: String) {
-		updateCallICE(callId: callId!, ice: ice) {
-			call in
-			if call != nil {
-				Log(message: "\(self.TAG) updateICE call is \(call!)")
+	@objc func updateICECandidates() {
+		updateCallICE(callId: callId!, ice: iceCandidates!, handler: {(success: Bool) -> Void in
+			if success {
+				Log(message: "\(self.TAG) updateICE success")
 			}
+		})
+	}
+	
+	func updateICE() {
+		DispatchQueue.main.async {
+			NSObject.cancelPreviousPerformRequests(withTarget: self)
+			self.perform(#selector(self.updateICECandidates), with: nil, afterDelay: 1)
 		}
+	}
+}
+
+extension CallViewController: WebRTCDelegate {
+	func onSDPCreated(sdp: RTCSessionDescription) {
+		updateSDP(sdp: sdp.description)
+	}
+	
+	func onIceGenerated(ice: RTCICECandidate) {
+		if self.iceCandidates == nil {
+			self.iceCandidates = ice.sdp
+		} else {
+			self.iceCandidates! += ";" + ice.sdp
+		}
+		updateICE()
 	}
 }

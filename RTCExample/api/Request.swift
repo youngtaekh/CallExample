@@ -23,8 +23,6 @@ struct Response: Codable {
 }
 
 func request(url: String, method: String, param: [String: Any]?, handler: @escaping (Bool, Any?) throws -> Void) {
-	Log(message: "\(TAG) \(#function)")
-	
 	//Check URL format
 	guard let url = URL(string: url) else {
 		Log(message: "Error: cannot create URL")
@@ -74,7 +72,7 @@ func request(url: String, method: String, param: [String: Any]?, handler: @escap
 		}
 		
 		if checkHeader(dictionary: dic!) {
-			Log(message: "Request Success")
+			Log(message: "Request \(url) Success")
 			try? handler(true, body)
 			return
 		}

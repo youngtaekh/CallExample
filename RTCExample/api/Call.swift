@@ -48,7 +48,7 @@ func updateCallStatus(
 func updateCallSDP(
 	callId: String,
 	sdp: String,
-	handler: @escaping (Call?) -> Void
+	handler: @escaping (Bool) -> Void
 ) {
 	request(
 		url: UPDATE_CALL_SDP,
@@ -56,24 +56,14 @@ func updateCallSDP(
 		param: ["callId":callId, "sdp":sdp]
 	) {
 		success, response in
-		guard success else {
-			handler(nil)
-			return
-		}
-		
-		guard let call = parseCall(response: response!) else {
-			handler(nil)
-			return
-		}
-		
-		handler(call)
+		handler(success)
 	}
 }
 
 func updateCallICE(
 	callId: String,
 	ice: String,
-	handler: @escaping (Call?) -> Void
+	handler: @escaping (Bool) -> Void
 ) {
 	request(
 		url: UPDATE_CALL_ICE,
@@ -81,17 +71,7 @@ func updateCallICE(
 		param: ["callId":callId, "ice":ice]
 	) {
 		success, response in
-		guard success else {
-			handler(nil)
-			return
-		}
-		
-		guard let call = parseCall(response: response!) else {
-			handler(nil)
-			return
-		}
-		
-		handler(call)
+		handler(success)
 	}
 }
 

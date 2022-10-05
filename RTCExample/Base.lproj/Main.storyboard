@@ -32,24 +32,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rXo-ej-Rx9">
-                                <rect key="frame" x="20" y="100" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Room Title" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rXo-ej-Rx9">
+                                <rect key="frame" x="20" y="149" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66a-Q5-ZbU">
-                                <rect key="frame" x="156.44117647076632" y="695" width="100" height="49.999999999999979"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="66a-Q5-ZbU">
+                                <rect key="frame" x="157" y="762" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="cAc-I4-Ci4"/>
+                                    <constraint firstAttribute="height" constant="50" id="fZe-CB-IQV"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Log Out"/>
                                 <connections>
                                     <action selector="signOut:" destination="xq2-sZ-Ghn" eventType="touchUpInside" id="lr3-Gr-791"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71h-zR-tcY" userLabel="Call">
-                                <rect key="frame" x="290" y="139" width="48" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71h-zR-tcY" userLabel="Call">
+                                <rect key="frame" x="278" y="203" width="48" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="round_call_24pt">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,9 +59,8 @@
                                     <action selector="call:" destination="xq2-sZ-Ghn" eventType="touchUpInside" id="Qx3-nN-7Ic"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fui-wF-1b0" userLabel="Message">
-                                <rect key="frame" x="346" y="139" width="48" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fui-wF-1b0" userLabel="Message">
+                                <rect key="frame" x="346" y="203" width="48" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="round_chat_24pt">
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,13 +69,34 @@
                                     <action selector="message:" destination="xq2-sZ-Ghn" eventType="touchUpInside" id="Pbb-pn-teB"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAG-F0-4oV">
+                                <rect key="frame" x="20" y="108" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u3U-sq-I0f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="66a-Q5-ZbU" firstAttribute="leading" secondItem="u3U-sq-I0f" secondAttribute="leading" constant="157" id="3Ri-pc-AP6"/>
+                            <constraint firstItem="u3U-sq-I0f" firstAttribute="trailing" secondItem="rXo-ej-Rx9" secondAttribute="trailing" constant="20" id="4sB-Lv-hVx"/>
+                            <constraint firstItem="KAG-F0-4oV" firstAttribute="top" secondItem="u3U-sq-I0f" secondAttribute="top" constant="20" id="5p9-Lp-B8N"/>
+                            <constraint firstItem="u3U-sq-I0f" firstAttribute="trailing" secondItem="Fui-wF-1b0" secondAttribute="trailing" constant="20" id="7C4-x3-Eyg"/>
+                            <constraint firstItem="rXo-ej-Rx9" firstAttribute="top" secondItem="KAG-F0-4oV" secondAttribute="bottom" constant="20" id="89M-cw-321"/>
+                            <constraint firstItem="71h-zR-tcY" firstAttribute="top" secondItem="rXo-ej-Rx9" secondAttribute="bottom" constant="20" id="BtV-m2-rBC"/>
+                            <constraint firstItem="KAG-F0-4oV" firstAttribute="leading" secondItem="u3U-sq-I0f" secondAttribute="leading" constant="20" id="XtM-je-vDD"/>
+                            <constraint firstItem="Fui-wF-1b0" firstAttribute="top" secondItem="rXo-ej-Rx9" secondAttribute="bottom" constant="20" id="ZD2-ad-gK0"/>
+                            <constraint firstItem="u3U-sq-I0f" firstAttribute="trailing" secondItem="66a-Q5-ZbU" secondAttribute="trailing" constant="157" id="dFc-pa-lqc"/>
+                            <constraint firstItem="rXo-ej-Rx9" firstAttribute="leading" secondItem="u3U-sq-I0f" secondAttribute="leading" constant="20" id="ggi-5V-Kes"/>
+                            <constraint firstItem="u3U-sq-I0f" firstAttribute="bottom" secondItem="66a-Q5-ZbU" secondAttribute="bottom" constant="50" id="pO1-fA-itA"/>
+                            <constraint firstItem="Fui-wF-1b0" firstAttribute="leading" secondItem="71h-zR-tcY" secondAttribute="trailing" constant="20" id="yPD-3b-tjE"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AdU-JP-Dnp"/>
                     <connections>
                         <outlet property="etRoomTitle" destination="rXo-ej-Rx9" id="6Yd-mx-bWm"/>
+                        <outlet property="tvUserId" destination="KAG-F0-4oV" id="XTI-rX-M9q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivC-cU-hSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -132,24 +153,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="refresh:" destination="47i-Zu-uD9" eventType="touchUpInside" id="keh-MI-8mR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nwN-39-wRY">
-                                <rect key="frame" x="36" y="250" width="121" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="update sdp"/>
-                                <connections>
-                                    <action selector="sdp:" destination="47i-Zu-uD9" eventType="touchUpInside" id="EaE-Ii-cp3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDY-En-Haf">
-                                <rect key="frame" x="165" y="250" width="121" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="update ice"/>
-                                <connections>
-                                    <action selector="ice:" destination="47i-Zu-uD9" eventType="touchUpInside" id="aD7-Le-5RW"/>
                                 </connections>
                             </button>
                         </subviews>

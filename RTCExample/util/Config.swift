@@ -11,6 +11,8 @@ import Foundation
 let STORY_BOARD = "Main"
 let SIGN_VIEW = "sign"
 
+let TERMINATED = "TERMINATED"
+
 let HEADER = "header"
 let CODE = "code"
 let STATUS = "status"
@@ -34,3 +36,5 @@ let GET_ROOM = "\(API_URL)room?roomId="
 let UPDATE_CALL_STATUS = "\(API_URL)call/status"
 let UPDATE_CALL_SDP = "\(API_URL)call/sdp"
 let UPDATE_CALL_ICE = "\(API_URL)call/ice"
+
+let STUN_SERVER = "stun:stun.l.google.com:19302"

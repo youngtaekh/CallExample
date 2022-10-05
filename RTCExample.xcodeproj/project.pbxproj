@@ -23,6 +23,10 @@
 		6F1C377D28D8637F0038FC71 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C377C28D8637F0038FC71 /* Call.swift */; };
 		6F1C377F28DAAD520038FC71 /* CallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C377E28DAAD520038FC71 /* CallViewController.swift */; };
 		6F1C378128DAC9F20038FC71 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C378028DAC9F20038FC71 /* Log.swift */; };
+		6F1C378528DC3A190038FC71 /* RTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C378428DC3A190038FC71 /* RTPManager.swift */; };
+		6F1C378728DD363F0038FC71 /* PCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C378628DD363F0038FC71 /* PCDelegate.swift */; };
+		6F1C378928DD38B30038FC71 /* SDPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C378828DD38B30038FC71 /* SDPDelegate.swift */; };
+		6F80631528EC0C57005EB7AF /* SDPEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F80631428EC0C57005EB7AF /* SDPEditor.swift */; };
 		8C0F80CE0519C564CCDBFB34 /* Pods_RTCExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1555E5C807C0AA063B7D64A3 /* Pods_RTCExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +51,11 @@
 		6F1C377C28D8637F0038FC71 /* Call.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		6F1C377E28DAAD520038FC71 /* CallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallViewController.swift; sourceTree = "<group>"; };
 		6F1C378028DAC9F20038FC71 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		6F1C378428DC3A190038FC71 /* RTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPManager.swift; sourceTree = "<group>"; };
+		6F1C378628DD363F0038FC71 /* PCDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCDelegate.swift; sourceTree = "<group>"; };
+		6F1C378828DD38B30038FC71 /* SDPDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPDelegate.swift; sourceTree = "<group>"; };
+		6F1C378A28DD3A800038FC71 /* RTCExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RTCExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F80631428EC0C57005EB7AF /* SDPEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDPEditor.swift; sourceTree = "<group>"; };
 		BF2C63D3AA92E35B3A226124 /* Pods-RTCExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTCExample.release.xcconfig"; path = "Target Support Files/Pods-RTCExample/Pods-RTCExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +105,7 @@
 				6F0C4CFB28D05D4800FA193A /* Assets.xcassets */,
 				6F0C4CFD28D05D4800FA193A /* LaunchScreen.storyboard */,
 				6F0C4D0028D05D4800FA193A /* Info.plist */,
+				6F1C378A28DD3A800038FC71 /* RTCExample-Bridging-Header.h */,
 			);
 			path = RTCExample;
 			sourceTree = "<group>";
@@ -106,6 +116,7 @@
 				6F0C4D1228D15BEC00FA193A /* AppDB.swift */,
 				6F0C4D1428D15C0A00FA193A /* Config.swift */,
 				6F1C378028DAC9F20038FC71 /* Log.swift */,
+				6F80631428EC0C57005EB7AF /* SDPEditor.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -113,6 +124,9 @@
 		6F0C4D0E28D159F200FA193A /* rtp */ = {
 			isa = PBXGroup;
 			children = (
+				6F1C378428DC3A190038FC71 /* RTPManager.swift */,
+				6F1C378628DD363F0038FC71 /* PCDelegate.swift */,
+				6F1C378828DD38B30038FC71 /* SDPDelegate.swift */,
 			);
 			path = rtp;
 			sourceTree = "<group>";
@@ -245,7 +259,9 @@
 				6F0C4CF728D05D4700FA193A /* ViewController.swift in Sources */,
 				6F1C377728D833880038FC71 /* Request.swift in Sources */,
 				6F1C378128DAC9F20038FC71 /* Log.swift in Sources */,
+				6F80631528EC0C57005EB7AF /* SDPEditor.swift in Sources */,
 				6F0C4CF328D05D4700FA193A /* AppDelegate.swift in Sources */,
+				6F1C378528DC3A190038FC71 /* RTPManager.swift in Sources */,
 				6F0C4D0928D07E0600FA193A /* SignViewController.swift in Sources */,
 				6F1C377B28D862DA0038FC71 /* Room.swift in Sources */,
 				6F1C377D28D8637F0038FC71 /* Call.swift in Sources */,
@@ -255,6 +271,8 @@
 				6F0C4CF528D05D4700FA193A /* SceneDelegate.swift in Sources */,
 				6F0C4D0728D07D1A00FA193A /* HomeViewController.swift in Sources */,
 				6F0C4D1328D15BEC00FA193A /* AppDB.swift in Sources */,
+				6F1C378928DD38B30038FC71 /* SDPDelegate.swift in Sources */,
+				6F1C378728DD363F0038FC71 /* PCDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +332,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -374,6 +393,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -418,6 +438,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.young.RTCExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RTCExample/RTCExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,6 +468,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kr.young.RTCExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RTCExample/RTCExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
